@@ -4,6 +4,8 @@ interface DividerProps {
   thickness?: string;
   dashLength?: string;
   gapLength?: string;
+  length?: string;
+  className?: string;
 }
 
 export default function Divider({
@@ -12,18 +14,21 @@ export default function Divider({
   thickness = "1px",
   dashLength = "12px",
   gapLength = "6px",
+  length = "100%",
+  className,
 }: DividerProps) {
   const isVertical = orientation === "vertical";
 
   return (
     <div
       style={{
-        width: isVertical ? thickness : "100%",
-        height: isVertical ? "100%" : thickness,
+        width: isVertical ? thickness : length,
+        height: isVertical ? length : thickness,
         backgroundImage: isVertical
           ? `repeating-linear-gradient(to bottom, ${color}, ${color} ${dashLength}, transparent ${dashLength}, transparent calc(${dashLength} + ${gapLength}))`
           : `repeating-linear-gradient(to right, ${color}, ${color} ${dashLength}, transparent ${dashLength}, transparent calc(${dashLength} + ${gapLength}))`,
       }}
+      className={className}
     />
   );
 }

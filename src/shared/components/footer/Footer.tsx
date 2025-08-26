@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="w-full py-[52px] px-[30px] flex flex-col gap-6">
+    <footer className="w-full py-[52px] px-[30px] flex flex-col gap-6 max-lg:px-[16px]">
       <ul className="flex justify-between text-base max-lg:flex-col max-lg:gap-8">
         <li className="max-lg:hidden">
           <Link href="/" aria-label="Ir al inicio">

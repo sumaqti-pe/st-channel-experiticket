@@ -1,6 +1,17 @@
+"use client";
 import React from "react";
-import { TextfieldProps } from "./types";
+// import { TextfieldProps } from "./types";
 import { textfieldVariant } from "./variants";
+
+interface TextfieldProps {
+  type?: "text" | "email" | "password";
+  placeholder?: string;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+  helper?: string;
+  error?: boolean;
+  isBlock?: boolean;
+}
 
 export const Textfield: React.FC<TextfieldProps> = ({
   type = "text",
@@ -9,10 +20,12 @@ export const Textfield: React.FC<TextfieldProps> = ({
   prepend,
   error,
   helper,
+  isBlock,
   ...props
 }) => {
   const style = textfieldVariant({
     error,
+    isBlock,
   });
 
   return (
@@ -20,6 +33,7 @@ export const Textfield: React.FC<TextfieldProps> = ({
       <div className={style.root()}>
         {prepend && <div className="pr-4">{prepend}</div>}
         <input
+          suppressHydrationWarning
           type={type}
           placeholder={placeholder}
           className={style.input()}
