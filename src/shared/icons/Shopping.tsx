@@ -2,13 +2,14 @@ import React from "react";
 
 interface ShoppingProps {
   color?: string;
+  size?: number;
 }
 
-export const Shopping: React.FC<ShoppingProps> = ({ color = "#ED1C24" }) => {
+export const Shopping: React.FC<ShoppingProps> = ({ color = "#ED1C24", size = 36 }) => {
   return (
     <svg
-      width="36"
-      height="36"
+      width={size}
+      height={size}
       viewBox="0 0 36 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

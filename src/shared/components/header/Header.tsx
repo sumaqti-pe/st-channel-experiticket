@@ -9,13 +9,16 @@ import { Search } from "lucide-react";
 import { useScrollY } from "@/shared/hooks/useScrollY";
 import { LogoWhite } from "@/shared/icons/LogoWhite";
 import { LogoWhiteMobile } from "@/shared/icons/LogoWhiteMobile";
+import { useResume } from "@/shared/hooks/useResume";
 
 export const Header = () => {
   const scrolled = useScrollY(90);
 
+  const { totalTickets } = useResume();
+
   return (
     <header>
-      <nav className="px-[30px] h-[90px] flex items-center justify-between max-lg:px-[16px] max-lg:h-[68px]">
+      <nav className="px-[100px] h-[90px] flex items-center justify-between max-lg:px-[16px] max-lg:h-[68px]">
         <div className="flex items-center gap-[18px] max-lg:hidden">
           <LogoPrimary />
           <MenuIcon color="#000" />
@@ -26,7 +29,7 @@ export const Header = () => {
         </div>
         <div className="flex items-center gap-3.5">
           <MenuProfile />
-          <Cart count={0} />
+          <Cart count={totalTickets} />
         </div>
       </nav>
       <nav className="bg-[#ED1C24] w-full px-[30px] h-[90px] flex items-center justify-between max-lg:px-[16px] sticky top-0 z-50 min-lg:hidden">
@@ -71,7 +74,7 @@ export const Header = () => {
             </div>
             <div className="flex items-center gap-3.5">
               <MenuProfile />
-              <Cart count={0} color="#fff"/>
+              <Cart count={totalTickets} color="#fff"/>
             </div>
           </>
         )}

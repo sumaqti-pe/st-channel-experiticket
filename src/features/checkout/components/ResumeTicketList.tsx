@@ -6,15 +6,17 @@ export const ResumeTicketList = () => {
   const { tickets } = useCompletedStore();
 
   return (
-    <div className="flex flex-col gap-5">
-      <h2 className="uppercase text-2xl font-bold flex items-center gap-3 max-lg:hidden">
-        <Flame />
-        tu compra
-      </h2>
+    <div className="flex justify-center items-center">
       <div className="flex flex-col gap-5">
-        {tickets.map((ticket) => (
-          <TicketCard key={ticket.id} {...ticket} />
-        ))}
+        <h2 className="uppercase text-2xl font-bold flex items-center gap-3 max-lg:hidden">
+          <Flame />
+          tu compra
+        </h2>
+        <div className="flex flex-col gap-5">
+          {tickets.map((ticket) => (
+            <TicketCard key={ticket.id} {...ticket} />
+          ))}
+        </div>
       </div>
     </div>
   );

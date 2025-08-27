@@ -4,7 +4,8 @@ import { MediumLune } from "@/shared/icons/MediumLune";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { Ticket } from "@/shared/icons/Ticket";
-
+import "dayjs/locale/es"; 
+dayjs.locale("es"); 
 export interface TicketCard {
   id: number;
   imageUrl: string;
@@ -25,7 +26,7 @@ export const TicketCard: React.FC<TicketCardProps> = ({
 }) => {
   return (
     <>
-      <section className="flex justify-between text-[#000] h-[268px] max-lg:hidden">
+      <section className="flex justify-between text-[#000] h-[268px] max-lg:hidden w-fit">
         <div className="flex bg-[#fff] shadow-lg">
           <div className="py-6 px-8 flex items-center">
             <Image
@@ -77,7 +78,9 @@ export const TicketCard: React.FC<TicketCardProps> = ({
             <div className="flex flex-col gap-1">
               <h2 className="text-sm uppercase">{name}</h2>
               <h3 className="uppercase text-xs">{location}</h3>
-              <p className="text-xs">{dayjs(date).format("DD [de] MMMM YYYY")}</p>
+              <p className="text-xs">
+                {dayjs(date).format("DD [de] MMMM YYYY")}
+              </p>
             </div>
             <p className="text-sm flex items-center gap-2">
               <Ticket color="#000" />
@@ -85,7 +88,12 @@ export const TicketCard: React.FC<TicketCardProps> = ({
             </p>
           </div>
         </div>
-        <Divider orientation="horizontal" length="100%" thickness="1px" className="my-2" />
+        <Divider
+          orientation="horizontal"
+          length="100%"
+          thickness="1px"
+          className="my-2"
+        />
         <div>
           <Button className="bg-[#000]" text="light" isBlock>
             Ver ticket

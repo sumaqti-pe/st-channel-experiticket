@@ -11,6 +11,7 @@ interface TextfieldProps {
   helper?: string;
   error?: boolean;
   isBlock?: boolean;
+  label?: string;
 }
 
 export const Textfield: React.FC<TextfieldProps> = ({
@@ -21,6 +22,7 @@ export const Textfield: React.FC<TextfieldProps> = ({
   error,
   helper,
   isBlock,
+  label,
   ...props
 }) => {
   const style = textfieldVariant({
@@ -30,16 +32,19 @@ export const Textfield: React.FC<TextfieldProps> = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <div className={style.root()}>
-        {prepend && <div className="pr-4">{prepend}</div>}
-        <input
-          suppressHydrationWarning
-          type={type}
-          placeholder={placeholder}
-          className={style.input()}
-          {...props}
-        />
-        {append && <div className="pl-4">{append}</div>}
+      <div className="flex flex-col gap-[12px]">
+        {label && <label className="uppercase">{label}</label>}
+        <div className={style.root()}>
+          {prepend && <div className="pr-4">{prepend}</div>}
+          <input
+            suppressHydrationWarning
+            type={type}
+            placeholder={placeholder}
+            className={style.input()}
+            {...props}
+          />
+          {append && <div className="pl-4">{append}</div>}
+        </div>
       </div>
       {error && <span className={style.helper()}>{helper}</span>}
     </div>

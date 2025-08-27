@@ -2,13 +2,19 @@ import React from "react";
 
 interface TicketProps {
   color?: string;
+  w?: string;
+  h?: string;
 }
 
-export const Ticket: React.FC<TicketProps> = ({ color = "white" }) => {
+export const Ticket: React.FC<TicketProps> = ({
+  color = "white",
+  w = "20",
+  h = "20",
+}) => {
   return (
     <svg
-      width="20"
-      height="20"
+      width={w}
+      height={h}
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

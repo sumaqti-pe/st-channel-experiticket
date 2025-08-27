@@ -20,7 +20,7 @@ export const Container: React.FC<ContainerProps> = ({
 
   return (
     <section className={style}>
-      <div className="max-w-[1360px]">{children}</div>
+      <div className="w-[1360px]">{children}</div>
     </section>
   );
 };

@@ -1,13 +1,9 @@
+"use client";
 import React from "react";
-import { tv } from "tailwind-variants";
-
-interface ButtonProps {
-  children?: React.ReactNode;
-  className?: string;
-  variant?: "primary" | "input";
-  text?: "light" | "dark";
-  isBlock?: boolean;
-}
+import { Loader } from "../loader/Loader";
+import { buttonVariant, textVariant } from "./variant";
+import { ButtonProps } from "./types";
+import { useRouter } from "next/navigation";
 
 export const Button: React.FC<ButtonProps> = ({
   children,
@@ -15,41 +11,40 @@ export const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   text,
   isBlock = false,
+  loading,
+  color,
+  disabled,
+  href,
+  onClick,
 }) => {
-  const buttonVariant = tv({
-    base: "cursor-pointer flex gap-[10px] py-[16px] rounded-full items-center font-bold border-t-2 border-l-2 border-r-2 border-b-4",
-    variants: {
-      variant: {
-        input: "px-[24px] max-h-[12px] bg-[#fff]",
-        primary: "px-[40px] text-[18px] h-[50px]",
-      },
-      isBlock: {
-        true: "w-full justify-center",
-      },
-    },
+  const router = useRouter();
+
+  const style = buttonVariant({
+    className,
+    variant,
+    isBlock,
+    color,
+    disabled,
+    loading,
   });
 
-  const textVariant = tv({
-    base: "",
-    variants: {
-      variant: {
-        input: "text-[#ED1C24]",
-        primary: "",
-      },
-      text: {
-        light: "text-[#fff]",
-        dark: "text-[#000]",
-      },
-    },
-  });
+  const textStyle = textVariant({ variant, text, color });
 
-  const style = buttonVariant({ className, variant, isBlock });
-
-  const textStyle = textVariant({ variant, text });
+  const handleClick = () => {
+    if (href) {
+      router.push(href);
+    }
+    onClick?.();
+  };
 
   return (
-    <button className={style}>
-      <span className={textStyle}>{children}</span>
+    <button
+      className={style}
+      disabled={disabled || loading}
+      onClick={handleClick}
+    >
+      {!loading && <span className={textStyle}>{children}</span>}
+      {loading && <Loader />}
     </button>
   );
 };
