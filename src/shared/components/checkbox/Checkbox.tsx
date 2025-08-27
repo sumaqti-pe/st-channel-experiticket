@@ -6,6 +6,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   label,
   checked,
   onChange,
+  value,
   ...props
 }) => {
   return (
@@ -14,7 +15,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         id={id}
         type="checkbox"
         checked={checked}
-        onChange={onChange}
+        onChange={onChange} // 👈 ahora no transformas, pasas el evento como viene
         className="
           peer w-5 h-5 appearance-none 
           border border-black rounded 

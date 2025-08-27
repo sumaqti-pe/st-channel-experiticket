@@ -11,9 +11,9 @@ export const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   text,
   isBlock = false,
-  loading,
+  loading = false,
   color,
-  disabled,
+  disabled = false,
   href,
   onClick,
 }) => {
@@ -39,8 +39,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      suppressHydrationWarning
       className={style}
-      disabled={disabled || loading}
+      disabled={Boolean(disabled || loading)}
       onClick={handleClick}
     >
       {!loading && <span className={textStyle}>{children}</span>}

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-// import { TextfieldProps } from "./types";
 import { textfieldVariant } from "./variants";
+import { Helper } from "../helper/Helper";
 
 interface TextfieldProps {
   type?: "text" | "email" | "password";
@@ -46,7 +46,7 @@ export const Textfield: React.FC<TextfieldProps> = ({
           {append && <div className="pl-4">{append}</div>}
         </div>
       </div>
-      {error && <span className={style.helper()}>{helper}</span>}
+      {error && <Helper error>{helper}</Helper>}
     </div>
   );
 };

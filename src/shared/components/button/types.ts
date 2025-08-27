@@ -5,8 +5,9 @@ export interface ButtonProps {
   text?: "light" | "dark";
   isBlock?: boolean;
   loading?: boolean;
-  color?: "black";
+  color?: "black" | "red";
   disabled?: boolean;
   href?: string;
+  type?: string;
   onClick?: () => void;
 }
