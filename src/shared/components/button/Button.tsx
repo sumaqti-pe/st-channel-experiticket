@@ -15,6 +15,8 @@ export const Button: React.FC<ButtonProps> = ({
   color,
   disabled = false,
   href,
+  append,
+  prepend,
   onClick,
 }) => {
   const router = useRouter();
@@ -44,7 +46,13 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={Boolean(disabled || loading)}
       onClick={handleClick}
     >
-      {!loading && <span className={textStyle}>{children}</span>}
+      {!loading && (
+        <>
+          {prepend}
+          <span className={textStyle}>{children}</span>
+          {append}
+        </>
+      )}
       {loading && <Loader />}
     </button>
   );

@@ -10,4 +10,6 @@ export interface ButtonProps {
   href?: string;
   type?: string;
   onClick?: () => void;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
 }

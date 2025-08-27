@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Inter, Inter_Tight, Cabin, Lexend_Deca } from "next/font/google";
 import { CartSection } from "@/shared/components/cart-section/CartSection";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const interTight = Inter_Tight({
@@ -44,6 +45,13 @@ export default function RootLayout({
           <div className="flex w-full justify-center">{children}</div>
         </div>
         <CartSection />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            className: "transition-all",
+          }}
+        />
       </body>
     </html>
   );

@@ -5,23 +5,26 @@ interface AuthLayoutProps {
   children?: React.ReactNode;
   title?: string;
   video?: string;
+  description?: string | React.ReactNode;
 }
 
 export const AuthLayout: React.FC<AuthLayoutProps> = ({
   children,
   title,
   video = "concert",
+  description,
 }) => {
   return (
     <section className="w-[1920px]">
       <section className="grid grid-cols-2 w-full h-screen max-lg:grid-cols-1 max-lg:py-[32px] max-lg:px-[24px]">
         <div className="flex items-center justify-center">
           <div className="w-[500px] flex flex-col gap-6">
-            <div className="flex mb-6 max-lg:justify-center max-lg:mb-10">
+            <div className="flex mb-10 justify-center max-lg:mb-10">
               <LogoPrimary />
             </div>
             <div>
               <h2 className="text-[24px] font-bold">{title}</h2>
+              <p className="text-[#727272]">{description}</p>
             </div>
             {children}
           </div>
