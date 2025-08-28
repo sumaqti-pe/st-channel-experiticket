@@ -67,7 +67,7 @@ export const Footer = () => {
             <a href="/ayuda">Recibir ayuda</a>
           </p>
           <p>
-            <a href="/faq">Preguntas frecuentes</a>
+            <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
           </p>
           <p>
             <a href="/reembolsos">Solicitar un reembolso</a>
@@ -82,13 +82,13 @@ export const Footer = () => {
         <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-4">
           <ul className="uppercase flex items-center text-base gap-[19px] max-lg:flex-col">
             <li>
-              <a href="/terminos">Términos y condiciones</a>
+              <a href="/terminos-y-condiciones">Términos y condiciones</a>
             </li>
             <li>
-              <a href="/privacidad">Política de privacidad</a>
+              <a href="/politicas-de-privacidad">Política de privacidad</a>
             </li>
             <li>
-              <a href="/faq">Preguntas frecuentes</a>
+              <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
             </li>
             <li>
               <a href="/libro-de-reclamaciones">Libro de reclamaciones</a>

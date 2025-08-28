@@ -9,18 +9,22 @@ import {
   SubscribeFormData,
   subscribeFormSchema,
 } from "@/shared/schemas/subscribeFormSchema";
+import { notify } from "@/shared/hooks/useNotify";
 
 export const SubscribeForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<SubscribeFormData>({
     resolver: yupResolver(subscribeFormSchema),
   });
 
   const onSubmit = (data: SubscribeFormData) => {
     console.log(data);
+    notify.success("Te has suscrito correctamente");
+    reset();
   };
 
   return (

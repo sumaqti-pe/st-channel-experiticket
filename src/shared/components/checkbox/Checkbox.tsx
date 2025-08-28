@@ -20,7 +20,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           peer w-5 h-5 appearance-none 
           border border-black rounded 
           checked:bg-red-500 checked:border-red-500
-          transition-colors cursor-pointer
+          transition-colors cursor-pointer bg-[#fff]
         "
         {...props}
       />

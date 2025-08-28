@@ -89,7 +89,7 @@ export const RegisterView = () => {
                 Términos y condiciones
               </span>{" "}
               y la{" "}
-              <Link href="/privacy-policy">
+              <Link href="/politicas-de-privacidad">
                 <span className="font-bold text-[#ED1C24] underline cursor-pointer">
                   Política de privacidad
                 </span>

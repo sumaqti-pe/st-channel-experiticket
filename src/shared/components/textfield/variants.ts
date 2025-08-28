@@ -20,3 +20,24 @@ export const textfieldVariant = tv({
     },
   },
 });
+
+export const textareaVariant = tv({
+  slots: {
+    root: "flex items-start rounded-2xl border border-[#D3D3D3] focus-within:border-2 focus-within:border-black transition-colors p-4 bg-[#fff]",
+    textarea:
+      "w-full resize-none uppercase placeholder:text-[#555555] border-none outline-none",
+  },
+  variants: {
+    error: {
+      true: {
+        root: "border-[#D93C3C] focus-within:border-2 focus-within:border-[#D93C3C]",
+      },
+    },
+    isBlock: {
+      true: {
+        root: "w-full",
+        textarea: "w-full",
+      },
+    },
+  },
+});

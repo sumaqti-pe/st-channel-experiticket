@@ -18,3 +18,11 @@ export interface ResumeTicket {
   id: string;
   price: number;
 }
+
+export interface SearcherItem {
+  id: string;
+  imageUrl: string;
+  title: string;
+  location: string;
+  date: string;
+}

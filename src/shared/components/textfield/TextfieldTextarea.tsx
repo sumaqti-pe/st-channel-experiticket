@@ -1,35 +1,27 @@
 "use client";
 import React from "react";
-import { textfieldVariant } from "./variants";
+import { textareaVariant } from "./variants";
 import { Helper } from "../helper/Helper";
 
-interface TextfieldProps {
-  type?: "text" | "email" | "password";
+interface TextareaProps {
   placeholder?: string;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
   helper?: string;
   error?: boolean;
   isBlock?: boolean;
   label?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  rows?: number;
 }
 
-export const Textfield: React.FC<TextfieldProps> = ({
-  type = "text",
+export const Textarea: React.FC<TextareaProps> = ({
   placeholder,
-  append,
-  prepend,
   error,
   helper,
   isBlock,
   label,
+  rows = 4,
   ...props
 }) => {
-  const style = textfieldVariant({
+  const style = textareaVariant({
     error,
     isBlock,
   });
@@ -39,15 +31,13 @@ export const Textfield: React.FC<TextfieldProps> = ({
       <div className="flex flex-col gap-[12px]">
         {label && <label className="uppercase">{label}</label>}
         <div className={style.root()}>
-          {prepend && <div className="pr-4">{prepend}</div>}
-          <input
+          <textarea
             suppressHydrationWarning
-            type={type}
             placeholder={placeholder}
-            className={style.input()}
+            rows={rows}
+            className={style.textarea()}
             {...props}
           />
-          {append && <div className="pl-4">{append}</div>}
         </div>
       </div>
       {error && <Helper error>{helper}</Helper>}
