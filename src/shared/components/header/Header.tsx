@@ -24,7 +24,7 @@ export const Header = () => {
     <header>
       <nav
         className={`px-[100px] h-[90px] flex items-center justify-between max-lg:px-[16px] max-lg:h-[68px] ${
-          scrolled ? "mb-[90px]" : ""
+          scrolled ? "min-lg:mb-[90px]" : ""
         }`}
       >
         <div className="flex items-center gap-[18px] max-lg:hidden">

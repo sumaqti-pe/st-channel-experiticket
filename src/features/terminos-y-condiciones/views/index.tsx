@@ -10,8 +10,8 @@ export const TerminosAndCondicionesView = () => {
           items={PoliticasNavigation}
         />
         <div className="bg-[#fff] rounded-xl flex flex-col gap-3 py-6">
-          <div className="py-[17px] px-6">
-            <h2 className="text-[32px] uppercase font-bold">
+          <div className="py-[17px] px-6 max-lg:py-[0px]">
+            <h2 className="text-[32px] uppercase font-bold max-lg:text-center">
               Términos y condiciones
             </h2>
           </div>
