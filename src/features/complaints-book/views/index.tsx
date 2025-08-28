@@ -108,6 +108,7 @@ export const ComplaintsBookView = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<FormValues>({
     resolver: yupResolver(schema) as never,
     defaultValues: {
@@ -116,6 +117,8 @@ export const ComplaintsBookView = () => {
       terms: false,
     },
   });
+
+  const legalRep = watch("legalRep");
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -133,7 +136,7 @@ export const ComplaintsBookView = () => {
               </h2>
             </div>
             <div className="py-[17px] flex flex-col gap-4 px-[60px] max-lg:px-4">
-              <span>
+              <span className="max-lg:text-justify">
                 La empresa Experiticket S.A.C., con RUC N° 20512345678, pone a
                 disposición el libro de reclamaciones con el fin de que los
                 consumidores y usuarios puedan presentar sus quejas y reclamos
@@ -146,10 +149,10 @@ export const ComplaintsBookView = () => {
                 className="my-4"
               />
 
-              <h2 className="text-[24px] uppercase">
+              <h2 className="text-[24px] uppercase max-lg:text-center">
                 Información del consumidor
               </h2>
-              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-5">
                 <Textfield
                   label="Nombres y apellidos *"
                   placeholder="Ingrese su nombre completo"
@@ -165,7 +168,7 @@ export const ComplaintsBookView = () => {
                   helper={errors.email?.message}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-5">
                 <Textfield
                   label="Tipo de documento *"
                   placeholder="Ingrese su tipo de documento"
@@ -181,7 +184,7 @@ export const ComplaintsBookView = () => {
                   helper={errors.docNumber?.message}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-5">
                 <Textfield
                   label="Departamento *"
                   placeholder="Ingrese su departamento"
@@ -197,7 +200,7 @@ export const ComplaintsBookView = () => {
                   helper={errors.province?.message}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-5">
                 <Textfield
                   label="Distrito *"
                   placeholder="Ingrese su distrito"
@@ -224,43 +227,45 @@ export const ComplaintsBookView = () => {
                     ¿Presenta el reclamo en representación de un tercero?
                   </label>
                 </div>
-                <div className="flex flex-col gap-3 py-4 px-6">
-                  <h2 className="text-[18px] uppercase text-center mb-4">
-                    Información del tercero
-                  </h2>
-                  <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
-                    <Textfield
-                      label="Nombre completo *"
-                      placeholder="Ingrese su nombre completo"
-                      {...register("repName")}
-                      error={!!errors.repName?.message}
-                      helper={errors.repName?.message}
-                    />
-                    <Textfield
-                      label="Correo electrónico *"
-                      placeholder="Ingrese su correo electrónico"
-                      {...register("repEmail")}
-                      error={!!errors.repEmail?.message}
-                      helper={errors.repEmail?.message}
-                    />
+                {legalRep && (
+                  <div className="flex flex-col gap-3 py-4 px-6">
+                    <h2 className="text-[18px] uppercase text-center mb-4">
+                      Información del tercero
+                    </h2>
+                    <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-5">
+                      <Textfield
+                        label="Nombre completo *"
+                        placeholder="Ingrese su nombre completo"
+                        {...register("repName")}
+                        error={!!errors.repName?.message}
+                        helper={errors.repName?.message}
+                      />
+                      <Textfield
+                        label="Correo electrónico *"
+                        placeholder="Ingrese su correo electrónico"
+                        {...register("repEmail")}
+                        error={!!errors.repEmail?.message}
+                        helper={errors.repEmail?.message}
+                      />
+                    </div>
+                    <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-5">
+                      <Textfield
+                        label="Tipo de documento *"
+                        placeholder="Ingrese su tipo de documento"
+                        {...register("repDocType")}
+                        error={!!errors.repDocType?.message}
+                        helper={errors.repDocType?.message}
+                      />
+                      <Textfield
+                        label="Número de documento *"
+                        placeholder="Ingrese su número de documento"
+                        {...register("repDocNumber")}
+                        error={!!errors.repDocNumber?.message}
+                        helper={errors.repDocNumber?.message}
+                      />
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
-                    <Textfield
-                      label="Tipo de documento *"
-                      placeholder="Ingrese su tipo de documento"
-                      {...register("repDocType")}
-                      error={!!errors.repDocType?.message}
-                      helper={errors.repDocType?.message}
-                    />
-                    <Textfield
-                      label="Número de documento *"
-                      placeholder="Ingrese su número de documento"
-                      {...register("repDocNumber")}
-                      error={!!errors.repDocNumber?.message}
-                      helper={errors.repDocNumber?.message}
-                    />
-                  </div>
-                </div>
+                )}
               </div>
 
               <Divider
@@ -272,7 +277,7 @@ export const ComplaintsBookView = () => {
               <h2 className="text-[24px] uppercase">
                 Detalle del reclamo / queja
               </h2>
-              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-5">
                 <Textfield
                   label="Número de pedido / ticket *"
                   placeholder="Ingrese su número de pedido"
@@ -288,7 +293,7 @@ export const ComplaintsBookView = () => {
                   helper={errors.eventName?.message}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+              <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-5">
                 <Textfield
                   label="Monto involucrado (si corresponde)"
                   placeholder="Ingrese el monto"
@@ -413,8 +418,16 @@ export const ComplaintsBookView = () => {
                   </span>{" "}
                 </div>{" "}
               </div>
-              <div className="flex justify-end">
-                <Button color="red" type="submit">
+              <div className="flex justify-end max-lg:pt-2">
+                <Button color="red" type="submit" className="max-lg:hidden">
+                  Enviar
+                </Button>
+                <Button
+                  color="red"
+                  type="submit"
+                  className="min-lg:hidden"
+                  isBlock
+                >
                   Enviar
                 </Button>
               </div>

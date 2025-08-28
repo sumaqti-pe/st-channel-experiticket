@@ -1,5 +1,4 @@
 "use client";
-import { ChevronUp } from "@/shared/icons/ChevronUp";
 import { ChevronDown } from "lucide-react";
 import React, { useState, useRef } from "react";
 
@@ -17,7 +16,7 @@ export const Accordion: React.FC<AccordionProps> = ({ label, children }) => {
   };
 
   return (
-    <div className="mx-6 flex flex-col gap-[10px] py-[17px] px-6 border-b border-[#D4D4D4] max-lg:gap-[12px]">
+    <div className="mx-6 flex flex-col gap-[10px] py-[17px] px-6 border-b border-[#D4D4D4] max-lg:gap-[12px] max-lg:px-0">
       <div
         className="flex items-center justify-between cursor-pointer select-none"
         onClick={toggle}
