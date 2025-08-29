@@ -55,11 +55,7 @@ export const CheckoutView = () => {
         </form>
       </FormProvider>
       {formToken && (
-        <IzipayForm
-          publicKey={process.env.NEXT_PUBLIC_IZIPAY_PUBLIC_KEY!}
-          formToken={formToken}
-          onClose={() => setFormToken(null)}
-        />
+        <IzipayForm formToken={formToken} onClose={() => setFormToken(null)} />
       )}
       {loadingCheckout && <PaymentLoading />}
     </Container>
